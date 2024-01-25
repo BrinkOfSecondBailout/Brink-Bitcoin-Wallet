@@ -11,8 +11,16 @@
 <body>
     <div class="index-wrapper">
         <h1>Welcome to Brink Wallet</h1>
+        {% if user.is_authenticated%}
+
+        <div>
+            <a href="logout">Logout</a>
+        </div>
+
+        {% else %}
         <a href="login"><button>Login</button></a>
         <a href="register"><button>Register</button></a>
+        {% endif %}
     </div>
 
 </body>
