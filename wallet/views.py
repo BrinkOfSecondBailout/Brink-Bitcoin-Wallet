@@ -50,4 +50,4 @@ def register(request):
             return redirect('register')
         
     else:
-        return render(request, 'register.htm', {'detail': detail})
+        return render(request, 'register.html', {'detail': detail})

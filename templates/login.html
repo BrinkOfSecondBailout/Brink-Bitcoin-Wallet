@@ -10,14 +10,34 @@
 </head>
 <body>
     <h1>Login</h1>
-    <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-    
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    <form action="login" method="POST">
+        {% csrf_token %}
 
-        <button type="submit">Login</button>
+        <div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+    
+        <div>
+            <button><input type="submit" value="Login"></button>
+        </div>
+
     </form>
+
+    <div>
+        <h1>No account with us yet?</h1>
+        <a href="register">Register</a>
+    </div>
 </body>
 </html>
