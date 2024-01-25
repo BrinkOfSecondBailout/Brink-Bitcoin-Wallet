@@ -4,3 +4,19 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.index-wrapper {
+    text-align: center;
+}
+
+.register-wrapper {
+    text-align: center;
+}
+
+.login-wrapper {
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+}

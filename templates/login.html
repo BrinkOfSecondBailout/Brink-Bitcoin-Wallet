@@ -9,35 +9,37 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="login" method="POST">
-        {% csrf_token %}
+    <div class="login-wrapper">
+        <h1>Login</h1>
+        <form action="login" method="POST">
+            {% csrf_token %}
 
-        <div>
-            {% for message in messages %}
-            <p>{{ message }}</p>
-            {% endfor %}
-        </div>
+            <div>
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
         
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
+            <div>
+                <button><input type="submit" value="Login"></button>
+            </div>
+
+        </form>
 
         <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <h1>No account with us yet?</h1>
+            <a href="register">Register</a>
         </div>
-    
-        <div>
-            <button><input type="submit" value="Login"></button>
-        </div>
-
-    </form>
-
-    <div>
-        <h1>No account with us yet?</h1>
-        <a href="register">Register</a>
     </div>
 </body>
 </html>

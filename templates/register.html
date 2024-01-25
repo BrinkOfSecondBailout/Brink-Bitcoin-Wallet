@@ -9,44 +9,58 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <h1>Register</h1>
-    <form action="register" method="POST">
-        {% csrf_token %}
+    <div class="register-wrapper">
+        <h1>Register</h1>
+        <form action="register" method="POST">
+            {% csrf_token %}
 
-        <div>
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
+            <div class="error-message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
 
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Email" required>
-        </div>
+            <div data-validate="Please enter email: johnwick@gmail.com">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" >
+            </div>
+                
+            <div data-validate="Please choose a username">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username" >
+            </div>
+
+            <div>
+                <input type="hidden" name="private_key" value="{{detail.private_key}}" readonly>
+            </div>
+
+            <div>
+                <input type="hidden" name="public_key" value="{{detail.public_key}}" readonly>
+            </div>
+
+            <div>
+                <input type="hidden" name="address" value="{{detail.address}}" readonly>
+            </div>
             
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Username" required>
-        </div>
-        
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="Password" required>
-        </div>
-        
-        <div>
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
-        </div>
-        
-        <div>
-            <button><input type="submit" value="Register"></button>
-        </div>
-    </form>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" >
+            </div>
+            
+            <div>
+                <label for="password2">Confirm Password:</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirm Password" >
+            </div>
+            
+            <div>
+                <button><input type="submit" value="Register"></button>
+            </div>
+        </form>
 
-    <div>
-        <h1>Already have an account?</h1>
-        <a href="login">Login</a>
+        <div>
+            <h1>Already have an account?</h1>
+            <a href="login">Login</a>
+        </div>
     </div>
 </body>
 </html>
