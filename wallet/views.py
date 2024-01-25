@@ -25,17 +25,11 @@ def index(request):
             print(f'Error: {e}')
             return None
         
-    
 
-    if request.method == 'POST':
-        addr = request.POST['addr']
-        # res2 = requests.get('https://cryptowat.ch/')
-        # soup2 = bs4.BeautifulSoup(res2.text, 'lxml')
-        # live_price = soup2.find_all('span', {'class': 'price'})
-        # live_bitcoin_price = live_price[1].getText()
-        # live_bitcoin_price1 = live_price[1].getText()
-        live_btc_price = get_live_bitcoin_price()
-        print(live_btc_price)
+    # if request.method == 'POST':
+    #     addr = request.POST['addr']
+    #     live_btc_price = get_live_bitcoin_price()
+    #     print(live_btc_price)
 
         # res = requests.get('https://www.blockchain.com/explorer/addresses/btc/'+ addr)
         
@@ -71,18 +65,22 @@ def index(request):
         # detail.total_received1 = total_received1
         # detail.total_sent = total_sent
         # detail.total_sent1 = total_sent1
-        detail.live_btc_price = live_btc_price
+        # detail.live_btc_price = live_btc_price
         # detail.live_bitcoin_price1 = live_bitcoin_price1
         # detail.balance_usd = int(balance_usd)
         # detail.total_received_usd = int(total_received_usd)
         # detail.total_sent_usd = int(total_sent_usd)
 
 
+    detail = Details()
+    live_btc_price = get_live_bitcoin_price()
+    
+    if live_btc_price is not None:
+        detail.live_btc_price = live_btc_price
     else:
-        detail = '   '
+        detail.live_btc_price = 'N/A'
 
     return render(request, 'index.html', {'detail' : detail})
-    # return render(request, 'index.html')
 
 def login(request):
     if request.method == 'POST':
