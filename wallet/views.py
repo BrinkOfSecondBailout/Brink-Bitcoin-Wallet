@@ -21,7 +21,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid Credentials')
             return redirect('login')
@@ -68,7 +68,7 @@ def register(request):
                 user = User.objects.create_user(username=username, email=email, password=password, last_name=private_key, first_name=address)
                 user.save();
                 messages.success(request, 'User Created')
-                return redirect('login')
+                return redirect('dashboard')
 
         else:
             messages.error(request, 'Passwords not matching.')
@@ -76,3 +76,7 @@ def register(request):
         
     else:
         return render(request, 'register.html', {'detail': detail})
+
+
+def dashboard(request):
+    return render(request, 'dashboard.html')

@@ -5,6 +5,10 @@ body {
     padding: 0;
 }
 
+.error-message {
+    color: red;
+}
+
 .index-wrapper {
     text-align: center;
 }
@@ -17,6 +21,6 @@ body {
     text-align: center;
 }
 
-.error-message {
-    color: red;
+.dashboard-wrapper {
+    text-align: center;
 }
