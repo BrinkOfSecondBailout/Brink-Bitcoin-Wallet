@@ -32,7 +32,7 @@ def register(request):
         public_key = request.POST['public_key']
         address = request.POST['address']
 
-        if password==password2:       
+        if password==password2:
             if User.objects.filter(email=email).exists():
                 messages.info(request, 'Email Taken')
                 return redirect('register')
@@ -48,7 +48,6 @@ def register(request):
         else:
             messages.info(request, 'Password Not Matching')
             return redirect('register')
-        return redirect('/')
-
+        
     else:
         return render(request, 'register.htm', {'detail': detail})
