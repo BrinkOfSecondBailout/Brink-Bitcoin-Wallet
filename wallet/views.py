@@ -7,6 +7,7 @@ from .models import Details
 from bitcoin import *
 import bs4
 import requests
+import qrcode
 
 # Create your views here.
 def index(request):
@@ -124,18 +125,43 @@ def dashboard(request):
             print(f'Error: {e}')
             return None
 
+    def generate_qr_code(address, output_file_path):
+        static_dir = os.path.join(os.path.dirname(__file__), 'static')
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+
+        qr.add_data(address)
+        qr.make(fit=True)
+
+        img = qr.make_image(fill_color='black', back_color='white')
+
+        images_dir = os.path.join(static_dir, 'images')
+
+        if not os.path.exists(images_dir):
+            os.makedirs(images_dir)
+        
+        output_file_path = os.path.join(images_dir, output_file_name)
+
+        img.save(output_file_path)
 
     detail = Details()
     user = request.user
-    live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
-    
 
+    btc_address = user.first_name
+    output_file_name = "qrcode.png"
+    generate_qr_code(btc_address, output_file_name)
+
+    live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
     if live_btc_price is not None:
         detail.live_btc_price = live_btc_price
     else:
         detail.live_btc_price = 'N/A'
 
-    wallet_info = get_wallet_info(user.first_name)
+    wallet_info = get_wallet_info(btc_address)
     detail.wallet_info = wallet_info
 
     return render(request, 'dashboard.html', {'detail' : detail})

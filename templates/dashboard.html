@@ -20,6 +20,7 @@
         <div>
             <h2>Your Bitcoin Address:</h2>
             <h2>{{ user.first_name }}</h2>
+            <img class="qr-code" src="{% static 'images/qrcode.png' %}">
         </div>
         
         <div>
@@ -32,21 +33,21 @@
         </div>
         
         <div>
-            <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}">
+            <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}" alt="QR Code Address">
         </div>
 
         <div>
             <div id="btc-div" class="balance-div">
                 <h3>Balance: {{ detail.wallet_info.balance_btc }} BTC</h3>
-                <img class="btc-icon" src="{% static 'images/btc-icon.png' %}">
+                <img class="btc-icon" src="{% static 'images/btc-icon.png' %}" alt="BTC Icon">
             </div>
             <div id="satoshi-div" class="balance-div">
                 <h3>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</h3>
-                <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}">
+                <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}" alt="Satoshi Icon">
             </div>
             <div id="usd-div" class="balance-div">
                 <h3>Balance: ${{ detail.wallet_info.balance_usd }} USD</h3>
-                <img class="usd-icon" src="{% static 'images/usd-icon.png' %}">
+                <img class="usd-icon" src="{% static 'images/usd-icon.png' %}" alt="USD Icon">
             </div>
         </div>
 

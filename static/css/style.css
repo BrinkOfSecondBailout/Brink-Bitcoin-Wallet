@@ -30,6 +30,11 @@ body {
     cursor: pointer;
 }
 
+.qr-code {
+    width: 100px;
+    height: 100px;
+}
+
 .btc-icon {
     width: 45px;
     height: 45px;
