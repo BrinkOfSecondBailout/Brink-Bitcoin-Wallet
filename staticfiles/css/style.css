@@ -24,30 +24,3 @@ body {
 .dashboard-wrapper {
     text-align: center;
 }
-
-.switch-icon {
-    width: 40px;
-    cursor: pointer;
-}
-
-.btc-icon {
-    width: 45px;
-    height: 45px;
-}
-
-.usd-icon {
-    width: 42px;
-    height: 42px;
-}
-
-.satoshi-icon {
-    width: 42px;
-    height: 42px;
-}
-
-.balance-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}

@@ -107,7 +107,6 @@ def dashboard(request):
                 transactions = data.get('n_tx', 'N/A')
                 total_received = data.get('total_received', 'N/A')
                 total_sent = data.get('total_sent', 'N/A')
-                print(balance_usd)
 
                 return {
                     'balance_satoshis': balance_satoshis,
@@ -128,7 +127,7 @@ def dashboard(request):
 
     detail = Details()
     user = request.user
-    live_btc_price = get_live_bitcoin_price()
+    live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
     
 
     if live_btc_price is not None:

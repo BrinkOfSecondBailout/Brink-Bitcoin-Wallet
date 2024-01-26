@@ -14,7 +14,7 @@
         <h2>Hello, {{ user.username }}</h2>
         
         <div>
-            <h2>Currently Bitcoin Price: {{ detail.live_btc_price }}</h2>
+            <h2>Currently Bitcoin Price: ${{ detail.live_btc_price }}</h2>
         </div>
         
         <div>
@@ -23,14 +23,34 @@
         </div>
         
         <div>
-            <a href=""><button>Send bitcoin</button></a>
-        </div>
-        <div>
-            <a href=""><button>Receive bitcoin</button></a>
+            <div>
+                <a href=""><button>Send bitcoin</button></a>
+            </div>
+            <div>
+                <a href=""><button>Receive bitcoin</button></a>
+            </div>
         </div>
         
         <div>
-            <h3>Balance: {{ detail.wallet_info.balance_btc }} BTC</h3>
+            <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}">
+        </div>
+
+        <div>
+            <div id="btc-div" class="balance-div">
+                <h3>Balance: {{ detail.wallet_info.balance_btc }} BTC</h3>
+                <img class="btc-icon" src="{% static 'images/btc-icon.png' %}">
+            </div>
+            <div id="satoshi-div" class="balance-div">
+                <h3>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</h3>
+                <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}">
+            </div>
+            <div id="usd-div" class="balance-div">
+                <h3>Balance: ${{ detail.wallet_info.balance_usd }} USD</h3>
+                <img class="usd-icon" src="{% static 'images/usd-icon.png' %}">
+            </div>
+        </div>
+
+        <div>
             <h3>Transactions: {{ detail.wallet_info.transactions }}</h3>
             <h3>Total BTC Received: {{ detail.wallet_info.total_received }}</h3>
             <h3>Total BTC Sent: {{ detail.wallet_info.total_sent }}</h3>
@@ -41,5 +61,7 @@
         </div>
     </div>
 
+
+<script type="text/javascript" src="{% static '/script.js' %}"></script>
 </body>
 </html>
