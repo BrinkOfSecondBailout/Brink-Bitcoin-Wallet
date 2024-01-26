@@ -100,14 +100,19 @@ def dashboard(request):
             response = requests.get(api_url)
             if response.status_code == 200:
                 data = response.json()
-                balance = data.get('final_balance', 'N/A')
+                balance_satoshis = data.get('final_balance', 'N/A')
+                balance_btc = '{:.9f}'.format(balance_satoshis / 100000000)
+                usd = float('{:.5f}'.format(balance_satoshis / 100000000)) * get_live_bitcoin_price()
+                balance_usd = '{:.2f}'.format(usd)
                 transactions = data.get('n_tx', 'N/A')
                 total_received = data.get('total_received', 'N/A')
                 total_sent = data.get('total_sent', 'N/A')
-
+                print(balance_usd)
 
                 return {
-                    'balance': balance,
+                    'balance_satoshis': balance_satoshis,
+                    'balance_btc': balance_btc,
+                    'balance_usd': balance_usd,
                     'transactions': transactions,
                     'total_received': total_received,
                     'total_sent': total_sent
