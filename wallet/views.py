@@ -10,77 +10,7 @@ import requests
 
 # Create your views here.
 def index(request):
-    def get_live_bitcoin_price():
-        api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD'
-        try:
-            response = requests.get(api_url)
-            if response.status_code == 200:
-                data = response.json()
-                live_price = data.get('last_trade_price', 'N/A')
-                return live_price
-            else:
-                print(f'Error: Unable to fetch data. Status code: {response.status_code}')
-                return None
-        except Exception as e:
-            print(f'Error: {e}')
-            return None
-        
-
-    # if request.method == 'POST':
-    #     addr = request.POST['addr']
-    #     live_btc_price = get_live_bitcoin_price()
-    #     print(live_btc_price)
-
-        # res = requests.get('https://www.blockchain.com/explorer/addresses/btc/'+ addr)
-        
-        # if res:
-            # soup = bs4.BeautifulSoup(res.text, 'lxml')
-            # print('soup is', soup)
-            # bal = soup.find_all('span', {'class': 'sc-5f049527-7 Prcrh'})
-            # print('balance is', bal)
-            # bal[4].getText()
-            # final_bal = bal[4].getText()
-            # final_bal1 = final_bal.replace(" ", "").rstrip()[:-3].upper()
-            # transactions = bal[1].getText()
-            # total_received = bal[2].getText()
-            # total_received1 = total_received.replace(" ", "").rstrip()[:-3].upper()
-            # total_sent = bal[3].getText()
-            # total_sent1 = total_sent.replace(" ", "").rstrip()[:-3].upper()
-            # final_bal1_int = float(final_bal1)
-            # total_received1_int = float(total_received1)
-            # total_sent1_int = float(total_sent1)
-            # live_bitcoin_price1_int = float(live_bitcoin_price1)
-            
-            # balance_usd = final_bal1_int*live_bitcoin_price1_int
-            # total_received_usd = total_received1_int*live_bitcoin_price1_int
-            # total_sent_usd = total_sent1_int*live_bitcoin_price1_int
-        # else:
-            # return redirect('/')
-
-        detail = Details()
-        # detail.balance = final_bal
-        # detail.balance1 = final_bal1
-        # detail.transactions = transactions
-        # detail.total_received = total_received
-        # detail.total_received1 = total_received1
-        # detail.total_sent = total_sent
-        # detail.total_sent1 = total_sent1
-        # detail.live_btc_price = live_btc_price
-        # detail.live_bitcoin_price1 = live_bitcoin_price1
-        # detail.balance_usd = int(balance_usd)
-        # detail.total_received_usd = int(total_received_usd)
-        # detail.total_sent_usd = int(total_sent_usd)
-
-
-    detail = Details()
-    live_btc_price = get_live_bitcoin_price()
-    
-    if live_btc_price is not None:
-        detail.live_btc_price = live_btc_price
-    else:
-        detail.live_btc_price = 'N/A'
-
-    return render(request, 'index.html', {'detail' : detail})
+    return render(request, 'index.html')
 
 def login(request):
     if request.method == 'POST':
@@ -91,7 +21,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid Credentials')
             return redirect('login')
@@ -137,8 +67,9 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, email=email, password=password, last_name=private_key, first_name=address)
                 user.save();
+                auth.login(request, user)
                 messages.success(request, 'User Created')
-                return redirect('/')
+                return redirect('dashboard')
 
         else:
             messages.error(request, 'Passwords not matching.')
@@ -147,6 +78,65 @@ def register(request):
     else:
         return render(request, 'register.html', {'detail': detail})
 
+def dashboard(request):
+    def get_live_bitcoin_price():
+        api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD'
+        try:
+            response = requests.get(api_url)
+            if response.status_code == 200:
+                data = response.json()
+                live_price = data.get('last_trade_price', 'N/A')
+                return live_price
+            else:
+                print(f'Error: Unable to fetch data. Status code: {response.status_code}')
+                return None
+        except Exception as e:
+            print(f'Error: {e}')
+            return None
+        
+    def get_wallet_info(address):
+        api_url = f'https://blockchain.info/rawaddr/{address}'
+        try:
+            response = requests.get(api_url)
+            if response.status_code == 200:
+                data = response.json()
+                balance = data.get('final_balance', 'N/A')
+                transactions = data.get('n_tx', 'N/A')
+                total_received = data.get('total_received', 'N/A')
+                total_sent = data.get('total_sent', 'N/A')
+
+
+                return {
+                    'balance': balance,
+                    'transactions': transactions,
+                    'total_received': total_received,
+                    'total_sent': total_sent
+                }
+
+            else:
+                print(f'Error: Unable to fetch data. Status code: {response.status_code}')
+                return None
+        except Exception as e:
+            print(f'Error: {e}')
+            return None
+
+
+    detail = Details()
+    user = request.user
+    live_btc_price = get_live_bitcoin_price()
+    
+
+    if live_btc_price is not None:
+        detail.live_btc_price = live_btc_price
+    else:
+        detail.live_btc_price = 'N/A'
+
+    wallet_info = get_wallet_info(user.first_name)
+    detail.wallet_info = wallet_info
+
+    return render(request, 'dashboard.html', {'detail' : detail})
+
 def logout(request):
     auth.logout(request)
     return redirect('/')
+

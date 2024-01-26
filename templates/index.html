@@ -11,44 +11,9 @@
 <body>
     <div class="index-wrapper">
         <h1>Welcome to Brink Wallet</h1>
-
-        {% if user.is_authenticated%}
-
-        <h2>Hello, {{ user.username }}</h2>
-
-        <div>
-            <h2>Currently Bitcoin Price: {{ detail.live_btc_price }}</h2>
-        </div>
-
-        <div>
-            <h2>Your Bitcoin Address:</h2>
-            <h2>{{ user.first_name }}</h2>
-        </div>
-
-        <div>
-            <a href=""><button>Send bitcoin</button></a>
-        </div>
-        <div>
-            <a href=""><button>Receive bitcoin</button></a>
-        </div>
-
-        <!-- <div>
-            <h3>Click here to see the full details of your wallet</h3>
-            <form action="/" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="addr" value="{{user.first_name}}">
-                <button type="submit">Submit</button>
-            </form>
-        </div> -->
-
-        <div>
-            <a href="logout">Logout</a>
-        </div>
-
-        {% else %}
+        
         <a href="login"><button>Login</button></a>
         <a href="register"><button>Register</button></a>
-        {% endif %}
     </div>
 
 </body>
