@@ -3,11 +3,13 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from django.core.cache import cache
 from .models import Details
 from bitcoin import *
 import bs4
 import requests
 import qrcode
+from ratelimit import limits, sleep_and_retry
 
 # Create your views here.
 def index(request):
@@ -80,23 +82,32 @@ def register(request):
         return render(request, 'register.html', {'detail': detail})
 
 def dashboard(request):
+    user = request.user
+    cached_data = cache.get(f'user_{user.id}_wallet_info')
+    API_KEY = '29a1f822-ccff-4d97-840e-701f540c0276'
+
+    @sleep_and_retry
+    @limits(calls=5, period=60)
     def get_live_bitcoin_price():
-        api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD'
+        api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD?apikey={API_KEY}'
         try:
             response = requests.get(api_url)
             if response.status_code == 200:
                 data = response.json()
                 live_price = data.get('last_trade_price', 'N/A')
+                print('Live BTC price fetched successfully')
                 return live_price
             else:
-                print(f'Error: Unable to fetch data. Status code: {response.status_code}')
+                print(f'Error: Unable to fetch live price data. Status code: {response.status_code}')
                 return None
         except Exception as e:
             print(f'Error: {e}')
             return None
         
+    @sleep_and_retry
+    @limits(calls=5, period=1)
     def get_wallet_info(address):
-        api_url = f'https://blockchain.info/rawaddr/{address}'
+        # api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
         try:
             response = requests.get(api_url)
             if response.status_code == 200:
@@ -108,6 +119,7 @@ def dashboard(request):
                 transactions = data.get('n_tx', 'N/A')
                 total_received = data.get('total_received', 'N/A')
                 total_sent = data.get('total_sent', 'N/A')
+                print('Wallet info fetched successfully')
 
                 return {
                     'balance_satoshis': balance_satoshis,
@@ -117,9 +129,9 @@ def dashboard(request):
                     'total_received': total_received,
                     'total_sent': total_sent
                 }
-
+                
             else:
-                print(f'Error: Unable to fetch data. Status code: {response.status_code}')
+                print(f'Error: Unable to fetch wallet data. Status code: {response.status_code}')
                 return None
         except Exception as e:
             print(f'Error: {e}')
@@ -136,20 +148,14 @@ def dashboard(request):
 
         qr.add_data(address)
         qr.make(fit=True)
-
         img = qr.make_image(fill_color='black', back_color='white')
-
         images_dir = os.path.join(static_dir, 'images')
-
         if not os.path.exists(images_dir):
             os.makedirs(images_dir)
-        
         output_file_path = os.path.join(images_dir, output_file_name)
-
         img.save(output_file_path)
 
     detail = Details()
-    user = request.user
 
     btc_address = user.first_name
     output_file_name = "qrcode.png"
@@ -161,8 +167,11 @@ def dashboard(request):
     else:
         detail.live_btc_price = 'N/A'
 
-    wallet_info = get_wallet_info(btc_address)
-    detail.wallet_info = wallet_info
+    # if cached_data is not None:
+    #     detail.wallet_info = cached_data
+    # else:
+    #     detail.wallet_info = get_wallet_info(user.first_name)
+    #     cache.set(f'user_{user.id}_wallet_info', detail.wallet_info, timeout=3600)
 
     return render(request, 'dashboard.html', {'detail' : detail})
 

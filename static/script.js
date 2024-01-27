@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const satoshiDiv = document.getElementById('satoshi-div')
     const usdDiv = document.getElementById('usd-div')
 
+    const receiveDiv = document.getElementById('receive-div');
+    receiveDiv.style.display = 'none';
+
     satoshiDiv.style.display = 'none';
     usdDiv.style.display = 'none';
 
@@ -21,3 +24,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function receiveBitcoin(e) {
+    e.preventDefault();
+    const receiveButton = document.getElementById('receive-button');
+    const receiveDiv = document.getElementById('receive-div');
+
+    if(receiveDiv.style.display === 'none') {
+        receiveDiv.style.display = 'flex';
+        receiveButton.classList.add('active-button');
+    } else {
+        receiveDiv.style.display = 'none';
+        receiveButton.classList.remove('active-button');
+    }
+}

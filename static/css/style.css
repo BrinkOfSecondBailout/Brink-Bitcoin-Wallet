@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: wheat;
+    background-color: rgb(255, 224, 144);
     margin: 0;
     padding: 0;
 }
@@ -55,4 +55,27 @@ body {
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.send-receive-div {
+    display: flex;
+    justify-content: center;
+}
+
+.send-receive-button {
+    height: 50px;
+    width: 120px;
+}
+
+#receive-div {
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.active-button {
+    background-color: rgb(158, 158, 158);
 }
