@@ -6,6 +6,8 @@ from django.core.validators import validate_email
 from django.core.cache import cache
 from .models import Details
 from bitcoin import *
+from hdwallet import HDWallet
+from hdwallet.symbols import BTC
 import bs4
 import requests
 import qrcode
@@ -83,7 +85,7 @@ def register(request):
 
 def dashboard(request):
     user = request.user
-    cached_data = cache.get(f'user_{user.id}_wallet_info')
+    # cached_data = cache.get(f'user_{user.id}_wallet_info')
     API_KEY = '29a1f822-ccff-4d97-840e-701f540c0276'
 
     @sleep_and_retry
@@ -174,6 +176,15 @@ def dashboard(request):
     #     cache.set(f'user_{user.id}_wallet_info', detail.wallet_info, timeout=3600)
 
     return render(request, 'dashboard.html', {'detail' : detail})
+
+# def generate_new_address(request):
+#     user = request.user
+#     original_private_key = user.last_name
+#     hdwallet = HDWallet(symbol=BTC)
+#     wallet = hdwallet.from_private_key(original_private_key)
+#     print(wallet.hdwallet.get_key())
+
+#     return redirect('dashboard')
 
 def logout(request):
     auth.logout(request)
