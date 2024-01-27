@@ -85,7 +85,7 @@ def register(request):
 
 def dashboard(request):
     user = request.user
-    # cached_data = cache.get(f'user_{user.id}_wallet_info')
+    cached_data = cache.get(f'user_{user.id}_wallet_info')
     API_KEY = '29a1f822-ccff-4d97-840e-701f540c0276'
 
     @sleep_and_retry
@@ -107,9 +107,9 @@ def dashboard(request):
             return None
         
     @sleep_and_retry
-    @limits(calls=5, period=1)
+    @limits(calls=1, period=300)
     def get_wallet_info(address):
-        # api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
+        api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
         try:
             response = requests.get(api_url)
             if response.status_code == 200:
@@ -169,11 +169,12 @@ def dashboard(request):
     else:
         detail.live_btc_price = 'N/A'
 
-    # if cached_data is not None:
-    #     detail.wallet_info = cached_data
-    # else:
-    #     detail.wallet_info = get_wallet_info(user.first_name)
-    #     cache.set(f'user_{user.id}_wallet_info', detail.wallet_info, timeout=3600)
+    if cached_data is not None:
+        detail.wallet_info = cached_data
+        print('Using cached data')
+    else:
+        detail.wallet_info = get_wallet_info(user.first_name)
+        cache.set(f'user_{user.id}_wallet_info', detail.wallet_info, timeout=3600)
 
     return render(request, 'dashboard.html', {'detail' : detail})
 

@@ -47,6 +47,13 @@
             <h3>Total BTC Sent: {{ detail.wallet_info.total_sent }}</h3>
         </div>
 
+        <div class="refresh-div">
+            <p>Due to rate limits, we use cache data to store your wallet information.</p>
+            <p>If you made new transactions recently, click here to update your address output</p>
+            <p>*Users can only refresh once every 5 minutes</p>
+            <button class="refresh-button">Refresh</button>
+        </div>
+
         <div class="send-receive-div">
             <button class="send-receive-button">Send bitcoin</button>
             <button onclick="receiveBitcoin(event)" class="send-receive-button" id="receive-button">Receive bitcoin</button>

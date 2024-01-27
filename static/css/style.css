@@ -79,3 +79,12 @@ body {
 .active-button {
     background-color: rgb(158, 158, 158);
 }
+
+.refresh-div p {
+    color: red;
+}
+
+.refresh-button {
+    height: 50px;
+    width: 120px;
+}
