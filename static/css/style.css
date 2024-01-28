@@ -94,3 +94,28 @@ body {
     border-radius: 5px;
     border: 3px solid black;
 }
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'Honk', system-ui;
+font-family: 'Pixelify Sans', sans-serif; 
+font-family: 'Sixtyfour', sans-serif; */
+
+.logo-text h1 {
+    font-family: 'Honk', system-ui;
+    font-size: 70px;
+}
+
+.header-text h2 {
+    font-family: 'Sixtyfour', sans-serif;
+}
+
+.info-text p {
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 25px;
+}
+
+.normal-text p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 18px;
+}
+

@@ -8,51 +8,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brink Wallet</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Honk&family=Pixelify+Sans&family=Sixtyfour&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="dashboard-wrapper">
-        <h2>Hello, {{ user.username }}</h2>
-        
-        <div>
-            <h2>Current Bitcoin Price: ${{ detail.live_btc_price }}</h2>
+        <div class="logo-text">
+            <h1>
+                Brink Wallet
+            </h1>
+        </div>
+
+        <div class="header-text">
+            <h2>Hello, {{ user.username }}</h2>
+            <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>
         </div>
         
         
-        <div>
-            <h1>
+        <div class="info-text">
+            <p>
                 Your Wallet Info
-            </h1>
+            </p>
             <div>
                 <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}" alt="QR Code Address">
             </div>
             <div>
                 <div id="btc-div" class="balance-div">
-                    <h3>Balance: {{ detail.wallet_info.balance_btc }} BTC</h3>
+                    <p>Balance: {{ detail.wallet_info.balance_btc }} BTC</p>
                     <img class="btc-icon" src="{% static 'images/btc-icon.png' %}" alt="BTC Icon">
                 </div>
                 <div id="satoshi-div" class="balance-div">
-                    <h3>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</h3>
+                    <p>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</p>
                     <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}" alt="Satoshi Icon">
                 </div>
                 <div id="usd-div" class="balance-div">
-                    <h3>Balance: ${{ detail.wallet_info.balance_usd }} USD</h3>
+                    <p>Balance: ${{ detail.wallet_info.balance_usd }} USD</p>
                     <img class="usd-icon" src="{% static 'images/usd-icon.png' %}" alt="USD Icon">
                 </div>
             </div>
         </div>
 
-        <div>
-            <h3>Transactions: {{ detail.wallet_info.transactions }}</h3>
-            <h3>Total BTC Received: {{ detail.wallet_info.total_received }}</h3>
-            <h3>Total BTC Sent: {{ detail.wallet_info.total_sent }}</h3>
+        <div class="info-text">
+            <p>Transactions: {{ detail.wallet_info.transactions }}</p>
+            <p>Total BTC Received: {{ detail.wallet_info.total_received }}</p>
+            <p>Total BTC Sent: {{ detail.wallet_info.total_sent }}</p>
         </div>
 
         
 
-        <div class="refresh-div">
+        <div class="refresh-div normal-text">
             <p>Due to current rate limits, we use cache data to store your wallet information.</p>
-            <p>If you made new transactions recently, click here to update your address output</p>
-            <p>Users can only refresh wallet data once roughly every 5 minutes</p>
+            <p>If you made new transactions recently, click "Refresh" below to update your address.</p>
+            <p>NOTE: Users can only refresh wallet data once roughly every 5 minutes</p>
             <div class="error-message">
                 {% for message in messages %}
                     <p>{{ message }}</p>
