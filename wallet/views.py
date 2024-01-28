@@ -12,6 +12,7 @@ import bs4
 import requests
 import qrcode
 from ratelimit import limits, sleep_and_retry
+import datetime
 
 # Create your views here.
 def index(request):
@@ -89,7 +90,7 @@ def dashboard(request):
     API_KEY = '29a1f822-ccff-4d97-840e-701f540c0276'
 
     @sleep_and_retry
-    @limits(calls=5, period=60)
+    @limits(calls=1, period=60)
     def get_live_bitcoin_price():
         api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD?apikey={API_KEY}'
         try:
@@ -110,8 +111,19 @@ def dashboard(request):
     @limits(calls=1, period=300)
     def get_wallet_info(address):
         api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
+        cache_key = f'last_api_call_{address}'
+
         try:
+            last_call_timestamp = cache.get(cache_key)
+            current_timestamp = datetime.datetime.now()
+
+            if last_call_timestamp and (current_timestamp - last_call_timestamp).seconds < 300:
+                print('Insufficient time between wallet retrieval')
+                messages.error(request, '*Insufficient time between wallet retrieval. Try again in a few minutes')
+                return None
+            
             response = requests.get(api_url)
+
             if response.status_code == 200:
                 data = response.json()
                 balance_satoshis = data.get('final_balance', 'N/A')
@@ -121,6 +133,8 @@ def dashboard(request):
                 transactions = data.get('n_tx', 'N/A')
                 total_received = data.get('total_received', 'N/A')
                 total_sent = data.get('total_sent', 'N/A')
+
+                cache.set(cache_key, current_timestamp)
                 print('Wallet info fetched successfully')
 
                 return {
@@ -164,10 +178,7 @@ def dashboard(request):
     generate_qr_code(btc_address, output_file_name)
 
     live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
-    if live_btc_price is not None:
-        detail.live_btc_price = live_btc_price
-    else:
-        detail.live_btc_price = 'N/A'
+    detail.live_btc_price = live_btc_price
 
     if cached_data is not None:
         detail.wallet_info = cached_data
@@ -186,6 +197,13 @@ def dashboard(request):
 #     print(wallet.hdwallet.get_key())
 
 #     return redirect('dashboard')
+
+def refresh_wallet_info(request):
+    user = request.user
+    cache_key = f'user_{user.id}_wallet_info'
+    cache.delete(cache_key)
+    print('Cache cleared')
+    return redirect('dashboard')
 
 def logout(request):
     auth.logout(request)

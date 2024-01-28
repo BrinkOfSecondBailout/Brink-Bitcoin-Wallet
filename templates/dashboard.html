@@ -47,11 +47,18 @@
             <h3>Total BTC Sent: {{ detail.wallet_info.total_sent }}</h3>
         </div>
 
+        
+
         <div class="refresh-div">
-            <p>Due to rate limits, we use cache data to store your wallet information.</p>
+            <p>Due to current rate limits, we use cache data to store your wallet information.</p>
             <p>If you made new transactions recently, click here to update your address output</p>
-            <p>*Users can only refresh once every 5 minutes</p>
-            <button class="refresh-button">Refresh</button>
+            <p>*Users can only refresh wallet data once roughly every 5 minutes</p>
+            <div class="error-message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            <a href="refresh_wallet_info"><button class="refresh-button">Refresh</button></a>
         </div>
 
         <div class="send-receive-div">
