@@ -66,6 +66,8 @@ body {
 .send-receive-button {
     height: 50px;
     width: 120px;
+    border-radius: 5px;
+    border: 3px solid black;
 }
 
 #receive-div {
@@ -82,10 +84,12 @@ body {
 }
 
 .refresh-div p {
-    color: red;
+    color: rgb(250, 135, 28);
 }
 
 .refresh-button {
     height: 40px;
     width: 100px;
+    border-radius: 5px;
+    border: 3px solid black;
 }
