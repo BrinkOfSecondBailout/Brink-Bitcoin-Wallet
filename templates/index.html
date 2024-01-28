@@ -14,10 +14,22 @@
 </head>
 <body>
     <div class="index-wrapper">
-        <h1>Welcome to Brink Wallet</h1>
+        <div class="intro-div logo-text">
+            <h2>Welcome to</h2>
+            <div class="logo-and-text">
+                <h1>Brink Wallet</h1>
+                <img id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
+            </div>
+        </div>
+
+        <div class="newspaper-div">
+            <img class="newspaper-clipping" src="{% static 'images/newspaper-clip.webp' %}" alt="Newspaper Clipping">
+        </div>
         
-        <a href="login"><button>Login</button></a>
-        <a href="register"><button>Register</button></a>
+        <div class="login-and-register-buttons-div">
+            <a href="login"><button class="standard-button">Login</button></a>
+            <a href="register"><button class="standard-button">Register</button></a>
+        </div>
     </div>
 
 </body>

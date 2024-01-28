@@ -16,9 +16,10 @@
 <body>
     <div class="dashboard-wrapper">
         <div class="logo-text">
-            <h1>
-                Brink Wallet
-            </h1>
+            <div class="logo-and-text">
+                <h1>Brink Wallet</h1>
+                <img  id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
+            </div>
         </div>
 
         <div class="header-text">
@@ -61,18 +62,18 @@
         <div class="refresh-div normal-text">
             <p>Due to current rate limits, we use cache data to store your wallet information.</p>
             <p>If you made new transactions recently, click "Refresh" below to update your address.</p>
-            <p>NOTE: Users can only refresh wallet data once roughly every 5 minutes</p>
+            <p>NOTE: Users can only refresh wallet data once roughly every FIVE minutes</p>
             <div class="error-message">
                 {% for message in messages %}
                     <p>{{ message }}</p>
                 {% endfor %}
             </div>
-            <a href="refresh_wallet_info"><button class="refresh-button">Refresh</button></a>
+            <a href="refresh_wallet_info"><button class="">Refresh</button></a>
         </div>
 
         <div class="send-receive-div">
-            <button class="send-receive-button">Send bitcoin</button>
-            <button onclick="receiveBitcoin(event)" class="send-receive-button" id="receive-button">Receive bitcoin</button>
+            <button class="standard-button">Send bitcoin</button>
+            <button onclick="receiveBitcoin(event)" class="standard-button" id="receive-button">Receive bitcoin</button>
         </div>
 
         <div id="receive-div">

@@ -14,6 +14,15 @@
 </head>
 <body>
     <div class="login-wrapper">
+        
+        <div class="intro-div logo-text">
+            <h2>Welcome to</h2>
+            <div class="logo-and-text">
+                <h1>Brink Wallet</h1>
+                <img id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
+            </div>
+        </div>
+
         <h1>Login</h1>
         <form action="login" method="POST">
             {% csrf_token %}
