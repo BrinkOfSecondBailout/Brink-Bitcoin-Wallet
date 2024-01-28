@@ -206,9 +206,18 @@ def dashboard(request):
 
 def refresh_wallet_info(request):
     user = request.user
-    cache_key = f'user_{user.id}_wallet_info'
-    cache.delete(cache_key)
-    print('Cache cleared')
+    address = user.first_name
+    current_timestamp = datetime.datetime.now()
+    cache_key = f'last_api_call_{address}'
+    last_call_timestamp = cache.get(cache_key)
+    if last_call_timestamp and (current_timestamp - last_call_timestamp).seconds < 300:
+        print('Insufficient time between wallet retrieval')
+        messages.error(request, '*Insufficient time between wallet retrieval. Try again in a few minutes')
+    else:
+        cache_key = f'user_{user.id}_wallet_info'
+        cache.delete(cache_key)
+        print('Cache cleared')
+
     return redirect('dashboard')
 
 def logout(request):
