@@ -68,7 +68,7 @@ body {
 }
 
 
-#receive-div {
+#receive-div , #send-div{
     flex-direction: column;
     justify-content: center;
 }
@@ -168,7 +168,7 @@ font-family: 'Sixtyfour', sans-serif; */
 
 .info-text {
     font-family: 'Sixtyfour', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .normal-text {
@@ -238,4 +238,8 @@ font-family: 'Sixtyfour', sans-serif; */
     font-size: 20px;
     border: 5px solid black;
     font-family: 'Pixelify Sans', sans-serif;
+}
+
+.construction-icon {
+    width: 200px;
 }

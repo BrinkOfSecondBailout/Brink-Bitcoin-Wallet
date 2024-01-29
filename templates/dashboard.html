@@ -26,6 +26,31 @@
             <h2>Hello, {{ user.username }}</h2>
             <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>
         </div>
+
+        <div class="send-receive-div">
+            <button class="standard-button">Send bitcoin</button>
+            <button onclick="receiveBitcoin(event)" class="standard-button" id="receive-button">Receive bitcoin</button>
+        </div>
+
+        <div id="send-div" class="font-sixty-four-div">
+            <h3>This feature is under construction</h3>
+            <h3>Come back for it soon!</h3>
+            <img class="construction-icon" src="{% static 'images/under-construction.webp' %}" alt="Under construction">
+        </div>
+        
+        <div id="receive-div" class="font-sixty-four-div">
+            <h4>Remember to ONLY send BTC to this address</h4>
+            <h3>Your Wallet Address:</h3>
+            <div>
+                <h2><u>{{ user.first_name }}</u></h2>
+            </div>
+            <div>
+                <img class="qr-code" src="{% static 'images/qrcode.png' %}" alt="QR Code">
+            </div>
+            <!-- <div>
+                <a href="generate_new_address"><button>Generate new address</button></a>
+            </div> -->
+        </div>
         
         <div class="wallet-info-div">
             <div class="info-text">
@@ -72,23 +97,7 @@
             <a href="refresh_wallet_info"><button class="standard-submit-button">Refresh</button></a>
         </div>
 
-        <div class="send-receive-div">
-            <button class="standard-button">Send bitcoin</button>
-            <button onclick="receiveBitcoin(event)" class="standard-button" id="receive-button">Receive bitcoin</button>
-        </div>
-
-        <div id="receive-div">
-            <h2>Your Bitcoin Address:</h2>
-            <div>
-                <h2>{{ user.first_name }}</h2>
-            </div>
-            <div>
-                <img class="qr-code" src="{% static 'images/qrcode.png' %}">
-            </div>
-            <!-- <div>
-                <a href="generate_new_address"><button>Generate new address</button></a>
-            </div> -->
-        </div>
+        
 
         <div>
             <a href="logout"><button class="logout-button">Logout</button></a>
