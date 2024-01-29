@@ -37,8 +37,11 @@
             </div>
         </div>
 
-        <div class="font-pixelify-div educational-div">
-            <h2>What is Bitcoin?</h2>
+        <div class="font-exo-div educational-div">
+            <h1>What is Bitcoin?</h1>
+            <div>
+                <img class="normal-icon" src="{% static 'images/btc-wallet.png' %}" alt="Bitcoin wallet">
+            </div>
             <p>There's probably an infinite amount of ways to describe bitcoin.</p>
             <p>But for me, bitcoin is a decentralized, permissioned-less, immutable, digital ledger that keeps track of all transactions within the network.</p>
             <p>This allows for individuals to exchange values peer to peer without a middle man, eliminating a multitude of problems that are caused by the traditional, legacy financial system.</p>
@@ -51,9 +54,52 @@
             </div>
         </div>
 
-        <div class="font-pixelify-div educational-div">
-            <h2>How does Brink Wallet work?</h2>
+        <div class="font-exo-div educational-div">
+            <h1>How does Brink Wallet work?</h1>
+            <h3>Your Private Key</h3>
+            <div>
+                <img class="normal-icon" src="{% static 'images/private-key.png' %}" alt="Private key">
+            </div>
             <p>When you first sign up to Brink Wallet, we randomly generate a bitcoin private key for you.</p>
+            <p>This private key is then stored on our database. Hence this is called a HOT wallet, meaning the security is significantly lower than that of a cold wallet.</p>
+            <p>A cold wallet is one that generates a private key for you and does not store it. It's up to YOU to manage this private key.</p>
+            <p>If your private key is stored by the custodian, (similar to this wallet), the risk of the custodian being hacked and lose your funds is very high.</p>
+            <p>Remember, anyone who knows your private key has control of your bitcoin.</p>
+            <p>In a hot wallet, you sacrifice security for convenience.</p>
+            <p class="red">This is why it's crucial to remember that Brink is an experimental wallet, made for educational purpose, and to NEVER send any large amount (more than a dollar or two worth) of bitcoin to it. If any.</p>
+            <p>It is much safer to purchase a cold wallet, generate your private key, then store and protect your own key instead.</p>
+
+            <h3>Your Public Key</h3>
+            <div>
+                <img class="normal-icon" src="{% static 'images/public-key.webp' %}" alt="Public key">
+            </div>
+            <p>Your public key is derived from your private key cryptographically.</p>
+            <p>The public key can be revealed with low consequences, unlike the private key.</p>
+            <p>This public key, however, will then be used to cryptographically generate a public address</p>
+            <p>Typically, the public key is only revealed when you are sending bitcoin to another party, not the other way around.</p>
+            <p>The public key will help the other party to verify that it's indeed you who owns the bitcoin being sent.</p>
+
+            <h3>Your Public Address</h3>
+            <div>
+                <img class="normal-icon" src="{% static 'images/public-address.png' %}" alt="Public address">
+            </div>
+            <p>The public address is derived cryptographically from the public key.</p>
+            <p>This is all you need to give out in order to receive bitcoin to your wallet.</p>
+            <p>Ideally, you should use a freshly generated address per transaction.</p>
+            <p>It's okay to re-use the same address, but if you're looking for privacy, it's not encouraged.</p>
+            <p class="red">Remember that this wallet is strictly educational, don't send more than a dollar or two worth of bitcoin to it, if any.</p>
+            <p>We recommend REAL companies such as Strike, River, or Swan to buy and receive your BTC.</p>
+
+        </div>
+
+        <div class="font-exo-div educational-div">
+            <div>
+                <img class="normal-icon" src="{% static 'images/question.png' %}" alt="Question">
+            </div>
+            <h3>Any additional questions or inquiries, please email me: nguyenduongpa@gmail.com</h3>
+            <a href="https://www.linkedin.com/in/softwaredev-danny/" target="_blank"><h3>LinkedIn</h3></a>
+            <a href="https://www.dannydev.info" target="_blank"><h3>Website</h3>
+            </a>
         </div>
     </div>
 </body>

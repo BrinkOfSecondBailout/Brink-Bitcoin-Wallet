@@ -38,17 +38,25 @@
             <button onclick="receiveBitcoin(event)" class="standard-button" id="receive-button">Receive bitcoin</button>
         </div>
 
-        <div id="send-div" class="font-sixty-four-div">
-            <h3>This feature is currently being built</h3>
-            <h3>Come back for it soon!</h3>
+        <div id="send-div" class="font-exo-div">
+            <h2>This feature is currently being built</h2>
+            <h2>Come back for it soon!</h2>
             <div>
                 <img class="construction-icon" src="{% static 'images/under-construction.webp' %}" alt="Under construction">
             </div>
         </div>
         
-        <div id="receive-div" class="font-sixty-four-div">
-            <h4>Remember to ONLY send BTC to this address</h4>
-            <h3>Your Wallet Address:</h3>
+        <div id="receive-div" class="font-exo-div">
+            <h3>Remember to ONLY send BTC to this address</h3>
+            <div>
+                <img class="small-icon" src="{% static 'images/warning-icon.png' %}" alt="Warning Icon">
+            </div>
+            <h3 class="red">Keep in mind, this is an experimental wallet for educational purpose, any funds you send here can be lost forever.</h3>
+            <h3 class="red">Your private key is also stored on our database, which makes it unsafe.</h3>
+            <h3 class="red">Please don't send any more than a dollar or two worth of bitcoin here. If any.</h3>
+            <h3 class="red">We recommend REAL companies such as Strike, River, or Swan to buy, send, and receive your BTC.</h3>
+            <a href="questions"><h3>Click here to learn more before proceeding</h3></a>
+            <h3 >Your Wallet Address:</h3>
             <div>
                 <h2><u>{{ user.first_name }}</u></h2>
             </div>
@@ -62,23 +70,23 @@
         
         <div class="wallet-info-div">
             <div class="info-text">
-                <p>
+                <h4>
                     Your Wallet Info
-                </p>
+                </h4>
                 <div>
                     <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}" alt="QR Code Address">
                 </div>
                 <div>
                     <div id="btc-div" class="balance-div">
-                        <p>Balance: {{ detail.wallet_info.balance_btc }} BTC</p>
+                        <h4>Balance: {{ detail.wallet_info.balance_btc }} BTC</h4>
                         <img class="btc-icon" src="{% static 'images/btc-icon.png' %}" alt="BTC Icon">
                     </div>
                     <div id="satoshi-div" class="balance-div">
-                        <p>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</p>
+                        <h4>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</h4>
                         <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}" alt="Satoshi Icon">
                     </div>
                     <div id="usd-div" class="balance-div">
-                        <p>Balance: ${{ detail.wallet_info.balance_usd }} USD</p>
+                        <h4>Balance: ${{ detail.wallet_info.balance_usd }} USD</h4>
                         <img class="usd-icon" src="{% static 'images/usd-icon.png' %}" alt="USD Icon">
                     </div>
                 </div>
@@ -86,14 +94,14 @@
         </div>
 
         <div class="info-text">
-            <p>Transactions: {{ detail.wallet_info.transactions }}</p>
-            <p>Total BTC Received: {{ detail.wallet_info.total_received }}</p>
-            <p>Total BTC Sent: {{ detail.wallet_info.total_sent }}</p>
+            <h4>Transactions: {{ detail.wallet_info.transactions }}</h4>
+            <h4>Total BTC Received: {{ detail.wallet_info.total_received }}</h4>
+            <h4>Total BTC Sent: {{ detail.wallet_info.total_sent }}</h4>
         </div>
 
         
 
-        <div class="refresh-div normal-text">
+        <div id="refresh-div" class="font-exo-div">
             <img class="small-icon" src="{% static 'images/exclamation-icon.png' %}" alt="Exclaimation!">
             <p>Due to current rate limits, we use cache data to store your wallet information.</p>
             <p>If you made new transactions recently, click "Refresh" below to update your address.</p>

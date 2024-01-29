@@ -119,11 +119,14 @@ body {
     transform: scale(1.1);
 }
 
-.refresh-div {
-    color: rgb(250, 135, 28);
+#refresh-div {
+    color: rgb(224, 108, 0);
     width: 30%;
     margin: 0 auto;
     margin-top: 5vh;
+    border: 2px solid white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .standard-button {
@@ -222,6 +225,10 @@ font-family: 'Sixtyfour', sans-serif; */
 
 .font-exo-div {
     font-family: 'Exo 2', sans-serif;
+}
+
+.red {
+    color: red;
 }
 
 
