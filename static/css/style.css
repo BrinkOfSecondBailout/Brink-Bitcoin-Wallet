@@ -4,7 +4,10 @@ body {
     margin: 0;
     padding: 0;
 }
-
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
 .error-message {
     color: red;
     font-style: italic;
@@ -38,6 +41,8 @@ body {
 
 .questions-wrapper {
     text-align: center;
+    height: fit-content;
+    padding-bottom: 10vh;
 }
 
 #header {
@@ -90,6 +95,10 @@ body {
     padding: 20px;
 }
 
+.educational-div {
+    width: 50%;
+    margin: 0 auto;
+}
 
 #receive-div , #send-div{
     flex-direction: column;
@@ -207,6 +216,13 @@ font-family: 'Sixtyfour', sans-serif; */
     font-family: 'Pixelify Sans', sans-serif;
 }
 
+.font-honk-div {
+    font-family: 'Honk', system-ui;
+}
+
+.font-exo-div {
+    font-family: 'Exo 2', sans-serif;
+}
 
 
 .logo-text h1 {
