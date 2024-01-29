@@ -120,13 +120,20 @@ body {
 }
 
 #refresh-div {
-    color: rgb(224, 108, 0);
+    color: rgb(0, 0, 0);
     width: 30%;
     margin: 0 auto;
     margin-top: 5vh;
     border: 2px solid white;
     padding: 20px;
     border-radius: 10px;
+    background-color: rgb(191, 191, 191);
+}
+
+.receive , .send {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .standard-button {
@@ -229,6 +236,14 @@ font-family: 'Sixtyfour', sans-serif; */
 
 .red {
     color: red;
+}
+
+.italics {
+    font-style: italic;
+}
+
+.underlined {
+    text-decoration: underline;
 }
 
 
