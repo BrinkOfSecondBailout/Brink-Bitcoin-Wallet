@@ -27,26 +27,27 @@
             <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>
         </div>
         
-        
-        <div class="info-text">
-            <p>
-                Your Wallet Info
-            </p>
-            <div>
-                <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}" alt="QR Code Address">
-            </div>
-            <div>
-                <div id="btc-div" class="balance-div">
-                    <p>Balance: {{ detail.wallet_info.balance_btc }} BTC</p>
-                    <img class="btc-icon" src="{% static 'images/btc-icon.png' %}" alt="BTC Icon">
+        <div class="wallet-info-div">
+            <div class="info-text">
+                <p>
+                    Your Wallet Info
+                </p>
+                <div>
+                    <img id="switch-icon" class="switch-icon" src="{% static 'images/switch-icon.png' %}" alt="QR Code Address">
                 </div>
-                <div id="satoshi-div" class="balance-div">
-                    <p>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</p>
-                    <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}" alt="Satoshi Icon">
-                </div>
-                <div id="usd-div" class="balance-div">
-                    <p>Balance: ${{ detail.wallet_info.balance_usd }} USD</p>
-                    <img class="usd-icon" src="{% static 'images/usd-icon.png' %}" alt="USD Icon">
+                <div>
+                    <div id="btc-div" class="balance-div">
+                        <p>Balance: {{ detail.wallet_info.balance_btc }} BTC</p>
+                        <img class="btc-icon" src="{% static 'images/btc-icon.png' %}" alt="BTC Icon">
+                    </div>
+                    <div id="satoshi-div" class="balance-div">
+                        <p>Balance: {{ detail.wallet_info.balance_satoshis }} satoshis</p>
+                        <img class="satoshi-icon" src="{% static 'images/satoshi-icon.png' %}" alt="Satoshi Icon">
+                    </div>
+                    <div id="usd-div" class="balance-div">
+                        <p>Balance: ${{ detail.wallet_info.balance_usd }} USD</p>
+                        <img class="usd-icon" src="{% static 'images/usd-icon.png' %}" alt="USD Icon">
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +69,7 @@
                     <p>{{ message }}</p>
                 {% endfor %}
             </div>
-            <a href="refresh_wallet_info"><button class="">Refresh</button></a>
+            <a href="refresh_wallet_info"><button class="standard-submit-button">Refresh</button></a>
         </div>
 
         <div class="send-receive-div">
@@ -90,8 +91,9 @@
         </div>
 
         <div>
-            <a href="logout">Logout</a>
+            <a href="logout"><button class="logout-button">Logout</button></a>
         </div>
+
     </div>
 
 
