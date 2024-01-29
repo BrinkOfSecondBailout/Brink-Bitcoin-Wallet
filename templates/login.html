@@ -23,35 +23,46 @@
             </div>
         </div>
 
-        <h1>Login</h1>
-        <form action="login" method="POST">
-            {% csrf_token %}
-
-            <div class="error-message">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
+        <div class="login-form-wrapper">
+            <div class="font-sixty-four-div">
+                <h2>Login</h2>
             </div>
+            <form class="standard-form" action="login" method="POST">
+                {% csrf_token %}
+
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                
+                <div class="font-pixelify-div">
+                    <div>
+                        <label for="username">Username:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="username" name="username">
+                    </div>
+                </div>
+
+                <div class="font-pixelify-div">
+                    <div>
+                        <label for="password">Password:</label>
+                    </div>
+                    <div>
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
             
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-            </div>
+                <div>
+                    <button class="standard-submit-button" type="submit">Login</button>
+                </div>
+            </form>
+        </div>
 
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-            </div>
-        
-            <div>
-                <button type="submit">Login</button>
-            </div>
-
-        </form>
-
-        <div>
-            <h1>No account with us yet?</h1>
-            <a href="register">Register</a>
+        <div class="font-pixelify-div">
+            <h2>No account with us yet?</h2>
+            <a href="register"><button class="standard-button">Register</button></a>
         </div>
     </div>
 </body>
