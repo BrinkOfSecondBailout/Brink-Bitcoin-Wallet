@@ -48,6 +48,10 @@ body {
     cursor: pointer;
 }
 
+.small-icon {
+    width: 40px;
+}
+
 .normal-icon {
     width: 70px;
 }
