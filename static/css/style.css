@@ -34,8 +34,8 @@ body {
 }
 
 .qr-code {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
 }
 
 .btc-icon {
@@ -63,7 +63,7 @@ body {
 .send-receive-div {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
     padding: 20px;
 }
 
@@ -71,6 +71,12 @@ body {
 #receive-div , #send-div{
     flex-direction: column;
     justify-content: center;
+    border: 2px solid white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 194, 97);
 }
 
 .flex {

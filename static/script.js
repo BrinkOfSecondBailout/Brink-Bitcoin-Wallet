@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const receiveDiv = document.getElementById('receive-div');
     receiveDiv.style.display = 'none';
+    const sendDiv = document.getElementById('send-div');
+    sendDiv.style.display = 'none';
 
     satoshiDiv.style.display = 'none';
     usdDiv.style.display = 'none';
@@ -29,12 +31,34 @@ function receiveBitcoin(e) {
     e.preventDefault();
     const receiveButton = document.getElementById('receive-button');
     const receiveDiv = document.getElementById('receive-div');
+    const sendButton = document.getElementById('send-button');
+    const sendDiv = document.getElementById('send-div');
 
     if(receiveDiv.style.display === 'none') {
         receiveDiv.style.display = 'flex';
         receiveButton.classList.add('active-button');
+        sendDiv.style.display = 'none';
+        sendButton.classList.remove('active-button');
     } else {
         receiveDiv.style.display = 'none';
         receiveButton.classList.remove('active-button');
+    }
+}
+
+function sendBitcoin(e) {
+    e.preventDefault();
+    const sendButton = document.getElementById('send-button');
+    const sendDiv = document.getElementById('send-div');
+    const receiveDiv = document.getElementById('receive-div');
+    const receiveButton = document.getElementById('receive-button');
+
+    if(sendDiv.style.display === 'none') {
+        sendDiv.style.display = 'flex';
+        sendButton.classList.add('active-button');
+        receiveDiv.style.display = 'none';
+        receiveButton.classList.remove('active-button');
+    } else {
+        sendDiv.style.display = 'none';
+        sendButton.classList.remove('active-button');
     }
 }

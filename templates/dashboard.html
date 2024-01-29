@@ -24,18 +24,23 @@
 
         <div class="header-text">
             <h2>Hello, {{ user.username }}</h2>
+            <div>
+                <a href="logout"><button class="logout-button">Logout</button></a>
+            </div>
             <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>
         </div>
 
         <div class="send-receive-div">
-            <button class="standard-button">Send bitcoin</button>
+            <button onclick="sendBitcoin(event)" class="standard-button" id="send-button">Send bitcoin</button>
             <button onclick="receiveBitcoin(event)" class="standard-button" id="receive-button">Receive bitcoin</button>
         </div>
 
         <div id="send-div" class="font-sixty-four-div">
-            <h3>This feature is under construction</h3>
+            <h3>This feature is currently being built</h3>
             <h3>Come back for it soon!</h3>
-            <img class="construction-icon" src="{% static 'images/under-construction.webp' %}" alt="Under construction">
+            <div>
+                <img class="construction-icon" src="{% static 'images/under-construction.webp' %}" alt="Under construction">
+            </div>
         </div>
         
         <div id="receive-div" class="font-sixty-four-div">
@@ -97,11 +102,6 @@
             <a href="refresh_wallet_info"><button class="standard-submit-button">Refresh</button></a>
         </div>
 
-        
-
-        <div>
-            <a href="logout"><button class="logout-button">Logout</button></a>
-        </div>
 
     </div>
 
