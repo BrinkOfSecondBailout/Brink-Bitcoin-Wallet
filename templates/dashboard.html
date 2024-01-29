@@ -24,7 +24,9 @@
 
         <div class="header-text">
             <h2>Hello, {{ user.username }}</h2>
-            <div>
+            <div class="navigation-links-div">
+                <a href="dashboard"><button class="nav-button">Dashboard</button></a>
+                <a href="questions"><button class="nav-button">?</button></a>
                 <a href="logout"><button class="logout-button">Logout</button></a>
             </div>
             <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>

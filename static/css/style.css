@@ -26,6 +26,8 @@ body {
 
 .dashboard-wrapper {
     text-align: center;
+    height: fit-content;
+    padding-bottom: 10vh;
 }
 
 .switch-icon {
@@ -87,8 +89,9 @@ body {
     transform: scale(1.1);
 }
 
-.refresh-div p {
+.refresh-div {
     color: rgb(250, 135, 28);
+    margin-top: 5vh;
 }
 
 .standard-button {
@@ -116,14 +119,15 @@ body {
     border: 3px solid black;
     height: fit-content;
     font-family: 'Pixelify Sans', sans-serif;
-    background-color: rgb(247, 186, 112);
+    background-color: rgb(255, 255, 255);
     font-size: 20px;
     box-shadow: 0 2px 2px black;
     padding: 10px;
 }
 
 .standard-submit-button:hover {
-    background-color: rgb(240, 168, 80);
+    background-color: rgb(132, 131, 131);
+    cursor: pointer;
 }
 
 .logout-button {
@@ -141,6 +145,25 @@ body {
 
 .logout-button:hover {
     background-color: rgb(169, 4, 4);
+    cursor: pointer;
+}
+
+.nav-button {
+    width: 170px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Sixtyfour', sans-serif;
+    text-align: center;
+    border: 5px solid black;
+    background-color: rgb(56, 178, 0);
+    color: white;
+    box-shadow: 0 3px 3px black;
+}
+
+.nav-button:hover {
+    background-color: rgb(48, 146, 2);
+    cursor: pointer;
 }
 
 /* font-family: 'Exo 2', sans-serif;

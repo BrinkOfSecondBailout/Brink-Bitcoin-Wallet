@@ -220,6 +220,9 @@ def refresh_wallet_info(request):
 
     return redirect('dashboard')
 
+def questions(request):
+    return render(request, 'questions.html')
+
 def logout(request):
     auth.logout(request)
     return redirect('/')
