@@ -14,14 +14,20 @@ body {
 
 .index-wrapper {
     text-align: center;
+    height: fit-content;
+    padding-bottom: 10vh;
 }
 
 .register-wrapper {
     text-align: center;
+    height: fit-content;
+    padding-bottom: 10vh;
 }
 
 .login-wrapper {
     text-align: center;
+    height: fit-content;
+    padding-bottom: 10vh;
 }
 
 .dashboard-wrapper {
@@ -30,9 +36,20 @@ body {
     padding-bottom: 10vh;
 }
 
+.questions-wrapper {
+    text-align: center;
+}
+
+#header {
+    margin-top: 5vh;
+}
 .switch-icon {
     width: 40px;
     cursor: pointer;
+}
+
+.normal-icon {
+    width: 70px;
 }
 
 .qr-code {
@@ -91,6 +108,8 @@ body {
 
 .refresh-div {
     color: rgb(250, 135, 28);
+    width: 30%;
+    margin: 0 auto;
     margin-top: 5vh;
 }
 
@@ -126,7 +145,7 @@ body {
 }
 
 .standard-submit-button:hover {
-    background-color: rgb(132, 131, 131);
+    background-color: rgb(255, 209, 3);
     cursor: pointer;
 }
 
@@ -164,6 +183,11 @@ body {
 .nav-button:hover {
     background-color: rgb(48, 146, 2);
     cursor: pointer;
+}
+
+.nav-active {
+    background-color: rgb(48, 146, 2);
+    transform: scale(1.1);
 }
 
 /* font-family: 'Exo 2', sans-serif;

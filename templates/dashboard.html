@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Honk&family=Pixelify+Sans&family=Sixtyfour&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class="dashboard-wrapper">
@@ -25,10 +24,12 @@
         <div class="header-text">
             <h2>Hello, {{ user.username }}</h2>
             <div class="navigation-links-div">
-                <a href="dashboard"><button class="nav-button">Dashboard</button></a>
+                <a href="dashboard"><button class="nav-button nav-active">Dashboard</button></a>
                 <a href="questions"><button class="nav-button">?</button></a>
                 <a href="logout"><button class="logout-button">Logout</button></a>
             </div>
+        </div>
+        <div id="header" class="header-text">
             <h2>Current Bitcoin Price: <u>${{ detail.live_btc_price }}</u></h2>
         </div>
 

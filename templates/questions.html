@@ -1,11 +1,41 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Honk&family=Pixelify+Sans&family=Sixtyfour&display=swap" rel="stylesheet">
     <title>How Does This Work?</title>
 </head>
 <body>
-    
+    <div class="questions-wrapper">
+        <div class="logo-text">
+            <div class="logo-and-text">
+                <h1>Brink Wallet</h1>
+                <img  id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
+            </div>
+        </div>
+
+        <div class="header-text">
+            <h2>Hello, {{ user.username }}</h2>
+            <div class="navigation-links-div">
+                <a href="dashboard"><button class="nav-button">Dashboard</button></a>
+                <a href="questions"><button class="nav-button nav-active">?</button></a>
+                <a href="logout"><button class="logout-button">Logout</button></a>
+            </div>
+        </div>
+
+        <div id="header" class="header-text">
+            <h1>So like...</h1>
+            <h1>How does this all work?</h1>
+            <div>
+                <img class="normal-icon" src="{% static 'images/question-icon.png' %}" alt="Question Mark">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
