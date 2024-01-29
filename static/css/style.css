@@ -8,6 +8,8 @@ body {
 .error-message {
     color: red;
     font-style: italic;
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 22px;
 }
 
 .index-wrapper {
@@ -107,11 +109,18 @@ body {
     border: 3px solid black;
     height: 40px;
     font-family: 'Pixelify Sans', sans-serif;
+    background-color: rgb(247, 186, 112);
+    font-size: 20px;
+    box-shadow: 0 2px 2px black;
+}
+
+.standard-submit-button:hover {
+    background-color: rgb(240, 168, 80);
 }
 
 /* font-family: 'Exo 2', sans-serif;
 font-family: 'Honk', system-ui;
-font-family: 'Pixelify Sans', sans-serif; 
+font-family: 'Pixelify Sans', sans-serif;
 font-family: 'Sixtyfour', sans-serif; */
 
 .font-sixty-four-div {
@@ -188,7 +197,7 @@ font-family: 'Sixtyfour', sans-serif; */
     box-shadow: 0 10px 10px black;
 }
 
-.login-form-wrapper {
+.login-form-wrapper, .register-form-wrapper {
     margin-top: 5vh;
     display: flex;
     flex-direction: column;
@@ -198,9 +207,13 @@ font-family: 'Sixtyfour', sans-serif; */
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-size: 22px;
 }
 
 .standard-form input {
     border-radius: 10px;
-    padding: 5px;
+    padding: 7px;
+    font-size: 20px;
+    border: 5px solid black;
+    font-family: 'Pixelify Sans', sans-serif;
 }
