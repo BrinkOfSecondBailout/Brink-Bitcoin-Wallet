@@ -1,0 +1,1 @@
+web gunicorn djangobitcoin.wsgi:application --log-file -
