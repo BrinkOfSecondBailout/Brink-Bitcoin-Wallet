@@ -79,16 +79,28 @@ WSGI_APPLICATION = 'djangobitcoin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'bitcoinwallet',
+#         'USER': 'postgres',
+#         'PASSWORD': 'DannyDev89',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bitcoinwallet',
-        'USER': 'postgres',
-        'PASSWORD': 'DannyDev89',
-        'HOST': 'localhost',
+        'NAME': 'df9923edal275k',
+        'USER': 'lyjguksmhkvkac',
+        'PASSWORD': '52628621ca6dfe00e5d755cc451e8f5fcfc6ae9efe62d0fce095487e37fc03ef',
+        'HOST': 'ec2-107-21-67-46.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
+
 
 
 # Password validation
