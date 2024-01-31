@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-w!0ve-!1)qf$%7)6l45n35eh@ne8lhzo@t75f#x12g8fb^*4kg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['brink-wallet.herokuapp.com']
 
 
 # Application definition
@@ -90,15 +90,19 @@ WSGI_APPLICATION = 'djangobitcoin.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'df9923edal275k',
+#         'USER': 'lyjguksmhkvkac',
+#         'PASSWORD': '52628621ca6dfe00e5d755cc451e8f5fcfc6ae9efe62d0fce095487e37fc03ef',
+#         'HOST': 'ec2-107-21-67-46.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'df9923edal275k',
-        'USER': 'lyjguksmhkvkac',
-        'PASSWORD': '52628621ca6dfe00e5d755cc451e8f5fcfc6ae9efe62d0fce095487e37fc03ef',
-        'HOST': 'ec2-107-21-67-46.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 
