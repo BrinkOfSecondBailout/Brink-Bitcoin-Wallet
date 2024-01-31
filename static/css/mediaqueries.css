@@ -14,6 +14,23 @@
     .educational-div {
         width: 80%;
     }
-
-
 }
+
+@media screen and (max-width: 769px) {
+    #public-address-text {
+        font-size: 22px;
+    }
+    #private-key {
+        width: 100%;
+    }
+    #private-key-text {
+        word-wrap: break-word;
+        max-width: 80%;
+        margin: 0 auto;
+        font-size: 20px;
+    }
+    #refresh-div {
+        width: 70%;
+    }
+}
+
