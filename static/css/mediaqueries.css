@@ -1,0 +1,19 @@
+@media screen and (max-width: 1025px) {
+    #refresh-div {
+        width: 50%;
+    }
+
+    .wallet-info-div {
+        width: 80%;
+    }
+
+    #receive-div , #send-div, #withdraw-div{
+        width: 80%;
+    }
+
+    .educational-div {
+        width: 80%;
+    }
+
+
+}
