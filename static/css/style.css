@@ -137,6 +137,20 @@ body {
     padding: 10px;
 }
 
+#private-key {
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2vh;
+    border: 2px solid black;
+    padding: 10px;
+    width: fit-content;
+    background-color: rgb(255, 47, 47);
+    border-radius: 5px;
+    color: white;
+}
+
 .standard-button {
     padding: 20px;
     height: fit-content;

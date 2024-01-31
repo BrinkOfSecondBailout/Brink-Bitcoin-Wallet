@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     sendDiv.style.display = 'none';
     const withdrawDiv = document.getElementById('withdraw-div');
     withdrawDiv.style.display = 'none';
+    const privateKey = document.getElementById('private-key');
+    privateKey.style.display = 'none';
 
     satoshiDiv.style.display = 'none';
     usdDiv.style.display = 'none';
@@ -93,5 +95,18 @@ function withdrawBitcoin(e) {
         withdrawDiv.style.display = 'none';
         withdrawButton.classList.remove('active-button');
     }
+}
 
+function revealPrivate(e) {
+    e.preventDefault();
+    const privateKey = document.getElementById('private-key');
+    const revealButton = document.getElementById('reveal-button');
+
+    if (privateKey.style.display === 'none') {
+        privateKey.style.display = 'flex';
+        revealButton.innerText = 'Hide Private Key';
+    } else {
+        privateKey.style.display = 'none';
+        revealButton.innerText = 'Reveal Private Key';
+    }
 }
