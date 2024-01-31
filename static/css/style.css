@@ -18,6 +18,10 @@ body {
     color: red;
 }
 
+.green {
+    color: green;
+}
+
 .italics {
     font-style: italic;
 }
@@ -70,6 +74,9 @@ body {
     flex-direction: column;
 }
 
+.login-div, .register-div {
+    margin-top: -3vh;
+}
 #header {
     margin-top: 5vh;
 }
