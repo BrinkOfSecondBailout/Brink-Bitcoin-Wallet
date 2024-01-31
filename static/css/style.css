@@ -100,7 +100,7 @@ body {
     margin: 0 auto;
 }
 
-#receive-div , #send-div{
+#receive-div , #send-div, #withdraw-div{
     flex-direction: column;
     justify-content: center;
     border: 2px solid white;
@@ -124,14 +124,14 @@ body {
     color: rgb(0, 0, 0);
     width: 30%;
     margin: 0 auto;
-    margin-top: 5vh;
+    margin-top: 2vh;
     border: 2px solid white;
     padding: 20px;
     border-radius: 10px;
     background-color: rgb(191, 191, 191);
 }
 
-.receive , .send {
+.receive , .send , .withdraw {
     width: 90%;
     margin: 0 auto;
     padding: 10px;
