@@ -79,7 +79,39 @@
 
         <div id="withdraw-div" class="font-exo-div">
             <div class="withdraw">
-
+                <h3 class="red underlined">Remember:</h3>
+                <h3>The private key is the ONLY key needed to control your bitcoin.</h3>
+                <h3>If anyone gains access to this key, the bitcoin is now theirs.</h3>
+                <div>
+                    <img class="normal-icon" src="{% static 'images/incognito.png' %}" alt="Incognito Icon">
+                </div>
+                <div>
+                    <img class="normal-icon" src="{% static 'images/key-gif.gif' %}" alt="Key Gif">
+                </div>
+                <h3 class="red"></h3>
+                <h3 class="red"></h3>
+                <h3 class="red"></h3>
+                <h3 class="red"></h3>
+                <h3 class="underlined">To Recap:</h3>
+                <h3><li>Your public address can be freely given to anyone so that they can send YOU bitcoin.</li></h3>
+                <h3><li>Your public key should only be given if you're trying to send THEM bitcoin, since this helps them verify that you own the bitcoin you're trying to send.</li></h3>
+                <h3><li>The private key, however, should be kept safe, private, and offline at all times.</li></h3>
+                <h3><li>Do not type, or store this key on any computer / phone / tablet device.</li></h3>
+                <h3><li>The best practice is to write it down on a piece of paper stored only in the physical realm.</li></h3>
+                <div>
+                    <img class="small-icon" src="{% static 'images/warning-icon.png' %}" alt="Warning Icon">
+                </div>
+                <h3 class="red">Since this private key was generated and stored here on this experimental, educational app, please assume that it's already been compromised.</h3>
+                <h3>Hopefully you did not send any large fund to this wallet, as previously warned.</h3>
+                <h3>Once you reveal your private key, please write it down carefully on a piece of paper.</h3>
+                <h3>You can then restore this key on any other traditional hot or cold wallet.</h3>
+                <h3>Since we are assuming this private key is already compromised, be sure to send all funds out to a different key that you generate on a more secured wallet.</h3>
+                <h3>The purpose of this app is simply to help you get comfortable with generating keys, sending tiny amounts of funds for testing, and then withdrawing it to a real wallet instead.</h3>
+                <div>
+                    <img class="small-icon" src="{% static 'images/urgent.png' %}" alt="Warning Icon">
+                </div>
+                <h3 class="red">Once again, please assume that this private key is already compromised. Do not continue to use it as a wallet to send more funds into.</h3>
+                <button onclick="revealPrivate(event)">Reveal Private Key</button>
             </div>
         </div>
         
