@@ -129,7 +129,7 @@ body {
     margin: 0 auto;
 }
 
-#receive-div , #send-div, #withdraw-div{
+#receive-div , #send-div, #withdraw-div {
     flex-direction: column;
     justify-content: center;
     border: 2px solid white;
@@ -139,6 +139,12 @@ body {
     border-radius: 10px;
     background-color: rgb(255, 194, 97);
     margin-bottom: 20px;
+}
+
+.receive , .send , .withdraw {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 .login-and-register-buttons-div {
@@ -186,11 +192,7 @@ body {
     background-color: rgb(191, 191, 191);
 }
 
-.receive , .send , .withdraw {
-    width: 80%;
-    margin: 0 auto;
-    padding: 10px;
-}
+
 
 #private-key {
     margin: 0 auto;
@@ -203,7 +205,6 @@ body {
     background-color: rgb(0, 0, 0);
     border-radius: 5px;
     color: white;
-    
 }
 
 .standard-button {

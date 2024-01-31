@@ -18,7 +18,7 @@
         <div class="logo-text">
             <div class="logo-and-text">
                 <h1>Brink Wallet</h1>
-                <img  id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
+                <img id="btc-gif" class="btc-gif" src="{% static 'images/bitcoin-gif.gif' %}" alt="Bitcoin logo gif">
             </div>
         </div>
 
@@ -67,6 +67,7 @@
                 <a href="questions"><h3>Click here to learn more before proceeding</h3></a>
                 <h3 >Your Wallet Address:</h3>
                 <div >
+                    <h4>(No spaces)</h4>
                     <h2 id="public-address-text" class="underlined">{{ user.first_name }}</h2>
                 </div>
                 <div>
@@ -80,7 +81,7 @@
 
         <div id="withdraw-div" class="font-exo-div">
             <div class="withdraw">
-                <h3 class="red underlined">Remember:</h3>
+                <h2 class="red underlined">Remember:</h2>
                 <h3>The private key is the ONLY key needed to control your bitcoin.</h3>
                 <h3>If anyone gains access to this key, the bitcoin is now theirs.</h3>
                 <div>

@@ -34,3 +34,78 @@
     }
 }
 
+
+@media screen and (max-width: 600px) {
+    .logo-text h1 {
+        font-size: 90px;
+    }
+    #btc-gif {
+        width: 60px;
+        height: 60px;
+    }
+    .header-text h2 {
+        font-size: 19px;
+    }
+    .navigation-links-div {
+        flex-direction: column;
+    }
+    .logout-button {
+        margin-top: 10px;
+    }
+    .nav-button {
+        font-size: 15px;
+    }
+    .standard-button {
+        font-size: 17px;
+    }
+    .send-receive-div {
+        flex-direction: column;
+        align-items: center;
+    }
+    #refresh-div {
+        width: 80%;
+    }
+    #public-address-text {
+        font-size: 20px;
+        word-wrap: break-word;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    #header {
+        font-size: 15px;
+        max-width: 90%;
+        margin: 0 auto;
+        margin-top: 5vh;
+    }
+    .info-text {
+        font-size: 14px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #receive-div , #send-div, #withdraw-div {
+        font-size: 15px;
+
+    }
+    .receive , .send , .withdraw {
+        width: 95%;
+    }
+    #private-key {
+        margin: 0 auto;
+        width: 90%;
+        margin-top: 2vh;
+    }
+
+    .qr-code {
+        margin-top: 2vh;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    .header-text h2 {
+        font-size: 18px;
+    }
+
+}
