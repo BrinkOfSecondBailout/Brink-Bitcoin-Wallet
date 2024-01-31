@@ -74,9 +74,6 @@ body {
     flex-direction: column;
 }
 
-.login-div, .register-div {
-    margin-top: -3vh;
-}
 #header {
     margin-top: 5vh;
 }
