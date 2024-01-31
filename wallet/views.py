@@ -74,7 +74,6 @@ def register(request):
                 user = User.objects.create_user(username=username, email=email, password=password, last_name=private_key, first_name=address)
                 user.save();
                 auth.login(request, user)
-                messages.success(request, 'User Created')
                 return redirect('dashboard')
 
         else:
@@ -93,7 +92,7 @@ def dashboard(request):
     # @sleep_and_retry
     # @limits(calls=1, period=60)
     def get_live_bitcoin_price():
-        api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD?apikey={API_KEY}'
+        # api_url = 'https://api.blockchain.com/v3/exchange/tickers/BTC-USD?apikey={API_KEY}'
         try:
             response = requests.get(api_url)
             if response.status_code == 200:
@@ -111,7 +110,7 @@ def dashboard(request):
     # @sleep_and_retry
     # @limits(calls=1, period=300)
     def get_wallet_info(address):
-        api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
+        # api_url = f'https://blockchain.info/rawaddr/{address}?apikey={API_KEY}'
         cache_key = f'last_api_call_{address}'
 
         try:
@@ -181,10 +180,10 @@ def dashboard(request):
     if cache_price is not None:
         detail.live_btc_price = cache_price
         print('Using cached Bitcoin price')
-    else:
-        live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
-        cache.set('current_btc_price', live_btc_price, timeout=180)
-        detail.live_btc_price = live_btc_price
+    # else:
+    #     live_btc_price = '{:,.0f}'.format(get_live_bitcoin_price())
+    #     cache.set('current_btc_price', live_btc_price, timeout=180)
+    #     detail.live_btc_price = live_btc_price
 
     if cached_data is not None:
         detail.wallet_info = cached_data
