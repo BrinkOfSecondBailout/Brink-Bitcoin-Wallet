@@ -59,10 +59,10 @@
         margin: 0 auto;
     }
     .logo-text h1 {
-        font-size: 70px;
+        font-size: 50px;
     }
     .logo-text h2 {
-        font-size: 40px;
+        font-size: 30px;
     }
     #btc-gif {
         width: 60px;
@@ -104,6 +104,7 @@
     }
     .standard-button {
         font-size: 17px;
+        width: 175px;
     }
     .send-receive-div {
         flex-direction: column;
